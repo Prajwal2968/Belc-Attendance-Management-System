@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <span class="app-name">BELC Attendance</span>
+            <div class="user-info">
+                <span id="username-display">Loading...</span>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="card clock-widget-card">
+            <h1 id="user-greeting">Welcome!</h1>
+            <p id="status-message">Checking your status...</p>
+            <div class="action-buttons">
+                <button id="clockInBtn" class="btn-primary" disabled>Clock In</button>
+                <button id="clockOutBtn" class="btn-secondary" disabled>Clock Out</button>
+            </div>
+            <button id="reportIssueBtn" class="btn-report-issue">Report an Issue</button>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Attendance History</h2>
+                <p>Your records from the last two months.</p>
+            </div>
+            <div class="card-body">
+                <table id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>Clock In</th>
+                            <th>Clock Out</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <!-- MODAL FOR REPORTING AN ISSUE -->
+    <div id="report-modal" class="modal">
+        <div class="modal-content">
+            <form id="report-form">
+                <div class="modal-header">
+                    <h2>Report Attendance Issue</h2>
+                    <span id="report-modal-close-btn" class="modal-close">×</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="issue-type">What is the problem?</label>
+                        <select id="issue-type" required>
+                            <option value="" disabled selected>-- Select an issue --</option>
+                            <option value="Forgot to Clock In">Forgot to Clock In</option>
+                            <option value="Forgot to Clock Out">Forgot to Clock Out</option>
+                            <option value="Accidentally Clocked Out">Accidentally Clocked Out (instead of In)</option>
+                            <option value="Accidentally Clocked In">Accidentally Clocked In (instead of Out)</option>
+                            <option value="Clock Out Failed">Pressed Clock Out, but it did not register</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-details">Details (Date, Time, etc.)</label>
+                        <textarea id="issue-details" rows="4" placeholder="Please provide the correct date and time, and any other helpful information."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit">Submit Report</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>
